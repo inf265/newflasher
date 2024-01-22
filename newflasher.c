@@ -3862,8 +3862,11 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				if (get_reply(dev, EP_IN, tmp, sizeof(tmp), USB_TIMEOUT, 0))
-					snprintf(current_slot, sizeof(current_slot), "%s", tmp_reply);
+				if (get_reply(dev, EP_IN, tmp, sizeof(tmp), USB_TIMEOUT, 0)) {
+					current_slot[0] = 'b';
+					current_slot[1] = 0x00;
+				}
+					//snprintf(current_slot, sizeof(current_slot), "%s", tmp_reply);
 			}
 		}
 	}
